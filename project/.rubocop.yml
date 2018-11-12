@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'log/*'
+    - 'tmp/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Documentation:
+    Enabled: false
+Metrics/LineLength:
+  Max: 110
+  Exclude:
+    - 'db/schema.rb'
