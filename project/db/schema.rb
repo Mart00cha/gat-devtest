@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_204345) do
+ActiveRecord::Schema.define(version: 2018_11_12_134937) do
 
   create_table "countries", force: :cascade do |t|
     t.string "code", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_11_204345) do
   create_table "location_groups_locations", id: false, force: :cascade do |t|
     t.integer "location_id", null: false
     t.integer "location_group_id", null: false
+    t.index ["location_id", "location_group_id"], name: "location_location_group_index"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -50,6 +51,23 @@ ActiveRecord::Schema.define(version: 2018_11_11_204345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_panel_providers_on_code", unique: true
+  end
+
+  create_table "target_group_to_countries", force: :cascade do |t|
+    t.integer "country_id"
+    t.integer "target_group_id"
+  end
+
+  create_table "target_groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "external_id", null: false
+    t.string "secret_code", null: false
+    t.integer "parent_id"
+    t.integer "panel_provider_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["panel_provider_id"], name: "index_target_groups_on_panel_provider_id"
+    t.index ["parent_id"], name: "index_target_groups_on_parent_id"
   end
 
 end

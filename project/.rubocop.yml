@@ -13,3 +13,5 @@ Metrics/LineLength:
   Max: 110
   Exclude:
     - 'db/schema.rb'
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']

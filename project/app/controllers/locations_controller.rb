@@ -24,9 +24,8 @@ class LocationsController < ApplicationController
 
     locations = []
     location_groups.each do |group|
-      locations << group.locations
+      locations += group.locations
     end
-
     locations.uniq
   end
 end
