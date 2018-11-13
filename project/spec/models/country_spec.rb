@@ -9,6 +9,11 @@ RSpec.describe Country, type: :model do
     expect(subject).to be_valid
   end
 
+  it 'is valid with locations' do
+    subject.locations = [Location.first, Location.last]
+    expect(subject).to be_valid
+  end
+
   it 'is not valid without a panel provider' do
     subject.panel_provider = nil
     expect(subject).to_not be_valid
